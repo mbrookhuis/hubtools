@@ -252,9 +252,9 @@ def get_slaves_systemgroup(session, client, systemgroup):
 def main():
     client = xmlrpc.client.Server("http://{}/rpc/api".format(uyunihub['server']['hubmaster']))
     session_key = client.auth.login(uyunihub['server']['user'], uyunihub['server']['password'])
-    if len(sys.argv) == 1:
+    if len(sys.argv) == 2:
         slaves = get_slaves_systemgroup(session_key, client, sys.argv[1])
-    elif len(sys.argv) > 1:
+    elif len(sys.argv) > 2:
         log.error("Usage: hub_dailyrun.py")
         client.auth.logout(session_key)
         sys.exit(1)
